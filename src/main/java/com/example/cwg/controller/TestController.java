@@ -1,4 +1,4 @@
-package com.example.cwg;
+package com.example.cwg.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
