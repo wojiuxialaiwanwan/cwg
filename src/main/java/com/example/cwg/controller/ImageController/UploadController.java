@@ -13,7 +13,10 @@ import java.io.IOException;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class UploadController {
 
-    public static String filepath1 = "C:\\Users\\123\\Desktop\\1\\image";
+    public static String BASE_LOC = "C:\\Users\\123\\Desktop\\1\\";
+    public static String[] filepath = new String[]{"",
+            BASE_LOC+"image_good",
+            BASE_LOC+"image_active"};
     @GetMapping("/test")
     public String test(){
         return "hello";
@@ -28,7 +31,7 @@ public class UploadController {
         // 也就是二进制
         byte[] bs = new BASE64Decoder().decodeBuffer(photo);
         // 确保本地路径存在
-        File savePath = new File(filepath1);
+        File savePath = new File(filepath[type]);
         if (!savePath.exists()){
             savePath.mkdir();
         }
