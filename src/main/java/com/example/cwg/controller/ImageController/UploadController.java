@@ -22,7 +22,7 @@ public class UploadController {
     @RequestMapping(value = "/upload", method = {RequestMethod.POST}, consumes = {"application/x-www-form-urlencoded"})
     @ResponseBody
     public String upload(@RequestParam(name = "name")String name,
-                         @RequestParam(name = "name")int type,
+                         @RequestParam(name = "type")int type,
                          @RequestParam(name = "photo") String photo) throws IOException {
         // 将photo中的图片字符串解压出来成图片
         // 也就是二进制
@@ -36,6 +36,7 @@ public class UploadController {
         fos.write(bs);
         fos.flush();
         fos.close();
+        System.out.println("保存图片："+name);
         return "上传成功";
     }
 }
