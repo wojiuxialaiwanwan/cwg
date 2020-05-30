@@ -21,7 +21,7 @@ public class RegisterController {
         }catch (Exception e){
             e.printStackTrace();
             String sql = "insert into `user`(phonenumber,password,image,nick,sex,qq,weixin) values('"+user.getPhonenumber()+"','"+user.getPassword()+
-                    "','"+user.getImage()+"','"+user.getNick()+"','"+user.getSex()+"','"+user.getQq()+"','"+user.getWeixin()+"')";
+                    "','123.jpg','"+user.getNick()+"','"+user.getSex()+"','"+user.getQq()+"','"+user.getWeixin()+"')";
             System.out.println(sql);
             jdbcTemplate.update(sql);
             return "注册成功!";
@@ -30,22 +30,31 @@ public class RegisterController {
 
     // update message
     @PostMapping(value = "/updateNickname")
-    public String updateNickname(@RequestParam("new_nickname")String new_nickname){
+    public String updateNickname(@RequestParam("new_nickname")String new_nickname,@RequestParam("id")int id){
         StringBuilder stringBuilder = new StringBuilder("update user set ");
         if(new_nickname != "" || "".equals(new_nickname)){
-            String sql = "update user set nick = " + new_nickname;
-            jdbcTemplate.queryForMap(sql);
+            String sql = "update user set nick = '" + new_nickname + "' where id="+id;
+            jdbcTemplate.update(sql);
         }
         return "";
     }
     // update message
     @PostMapping(value = "/updateSex")
-    public String updateSex(@RequestParam("new_sex")String new_sex){
+    public String updateSex(@RequestParam("new_sex")String new_sex,@RequestParam("id")int id){
         StringBuilder stringBuilder = new StringBuilder("update user set ");
         if(new_sex != "" || "".equals(new_sex)){
-            String sql = "update user set sex = " + new_sex;
-            jdbcTemplate.queryForMap(sql);
+            String sql = "update user set sex = '" + new_sex+ "' where id="+id;
+            jdbcTemplate.update(sql);
         }
         return "";
     }
+
+    @PostMapping(value = "/updatePic")
+    public String updatePic(@RequestParam("pic")String pic,@RequestParam("id")int id){
+        StringBuilder stringBuilder = new StringBuilder("update user set ");
+        String sql = "update user set image = '" + pic+ "' where id="+id;
+        jdbcTemplate.update(sql);
+        return "";
+    }
+
 }

@@ -3,7 +3,7 @@ package com.example.cwg.bean;
 public class Active {
     private int id;
     private int userid;
-    private String content,imgs,sta;
+    private String content,imgs,sta,type,time,nick,image;
     private int comments,saves,likes;
 
     public int getId() {
@@ -68,5 +68,36 @@ public class Active {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
