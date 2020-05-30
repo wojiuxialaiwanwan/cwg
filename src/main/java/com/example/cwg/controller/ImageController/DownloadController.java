@@ -21,7 +21,7 @@ public class DownloadController {
         response.setContentType("application/octet-stream");
         FileInputStream fis = null;
         try {
-            String path = UploadController.filepath1 + "/" + name;
+            String path = UploadController.filepath[type] + "/" + name;
             File file = new File(path);
             fis = new FileInputStream(file);
             response.setHeader("Content-Disposition", "attachment; filename="+file.getName());

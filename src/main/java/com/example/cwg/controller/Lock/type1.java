@@ -24,7 +24,11 @@ public class type1 {
 
     @PostMapping("/update")
     public void update(int id,String name){
-        String sql = "update type1 set name='"+name+"' where id="+id;
+        String sql;
+        if(id==0){
+            sql = "insert into type1(name) values('"+name+"');";
+        }
+        else sql = "update type1 set name='"+name+"' where id="+id;
         System.out.println(sql);
         jdbcTemplate.update(sql);
     }
