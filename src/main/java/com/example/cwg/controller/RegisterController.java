@@ -56,5 +56,20 @@ public class RegisterController {
         jdbcTemplate.update(sql);
         return "";
     }
-
+    @PostMapping(value = "/updatePassword")
+    public String updatePassword(@RequestParam("password")String password,@RequestParam("id")int id){
+        StringBuilder stringBuilder = new StringBuilder("update user set ");
+        String sql = "update user set password = '" + password+ "' where id="+id;
+        jdbcTemplate.update(sql);
+        System.out.println(sql);
+        return "";
+    }
+    @PostMapping(value = "/updatePhone")
+    public String updatePhone(@RequestParam("phone")String phone,@RequestParam("id")int id){
+        StringBuilder stringBuilder = new StringBuilder("update user set ");
+        String sql = "update user set phoneNumber = '" + phone+ "' where id="+id;
+        jdbcTemplate.update(sql);
+        System.out.println(sql);
+        return "";
+    }
 }
