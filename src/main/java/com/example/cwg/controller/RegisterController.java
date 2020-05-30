@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,5 +26,26 @@ public class RegisterController {
             jdbcTemplate.update(sql);
             return "注册成功!";
         }
+    }
+
+    // update message
+    @PostMapping(value = "/updateNickname")
+    public String updateNickname(@RequestParam("new_nickname")String new_nickname){
+        StringBuilder stringBuilder = new StringBuilder("update user set ");
+        if(new_nickname != "" || "".equals(new_nickname)){
+            String sql = "update user set nick = " + new_nickname;
+            jdbcTemplate.queryForMap(sql);
+        }
+        return "";
+    }
+    // update message
+    @PostMapping(value = "/updateSex")
+    public String updateSex(@RequestParam("new_sex")String new_sex){
+        StringBuilder stringBuilder = new StringBuilder("update user set ");
+        if(new_sex != "" || "".equals(new_sex)){
+            String sql = "update user set sex = " + new_sex;
+            jdbcTemplate.queryForMap(sql);
+        }
+        return "";
     }
 }

@@ -13,7 +13,7 @@ import java.io.IOException;
 @CrossOrigin(allowCredentials = "true", allowedHeaders = "*")
 public class UploadController {
 
-    public static String BASE_LOC = "C:\\Users\\123\\Desktop\\1\\";
+    public static String BASE_LOC = "D:\\1\\";
     public static String[] filepath = new String[]{"",
             BASE_LOC+"image_good",
             BASE_LOC+"image_active"};
